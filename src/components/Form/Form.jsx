@@ -9,6 +9,25 @@ const Form = ({ inputs, setInputs }) => {
         });
     };
 
+    const validateFirstName = (inputs) => {
+        return inputs.firstName.length > 0 && inputs.firstName.length < 2 ? "First Name must be at least 2 characters." : "";
+    }
+
+    const validateLastName = (inputs) => {
+        return inputs.lastName.length > 0 && inputs.lastName.length < 2 ? "Last Name must be at least 2 characters." : "";
+    }
+    const validateEmail = (inputs) => {
+        return inputs.email.length > 0 && inputs.email.length < 5 ? "Email must be at least 5 characters." : "";
+    }
+
+    const validatePassword = (inputs) => {
+        return inputs.password.length > 0 && inputs.password.length < 8 ? "Password must be at least 8 characters." : "";
+    }
+
+    const validateConfirmPassword = (inputs) => {
+        return inputs.password !== inputs.confirmPassword ? "Passwords must match." : "";
+    }
+
     return (
         <div>
             <form>
@@ -21,7 +40,7 @@ const Form = ({ inputs, setInputs }) => {
                         className="form-control"
                     />
                     <p className="text-muted">
-                        {inputs.firstName.length > 0 && inputs.firstName.length < 2 ? "First Name must be at least 2 characters." : ""}
+                        {validateFirstName(inputs)}
                     </p>
                 </div>
                 <div className="form-group">
@@ -33,7 +52,7 @@ const Form = ({ inputs, setInputs }) => {
                         className="form-control"
                     />
                     <p className="text-muted">
-                        {inputs.lastName.length > 0 && inputs.lastName.length < 2 ? "Last Name must be at least 2 characters." : ""}
+                        {validateLastName(inputs)}
                     </p>
                 </div>
                 <div className="form-group">
@@ -45,7 +64,7 @@ const Form = ({ inputs, setInputs }) => {
                         className="form-control"
                     />
                     <p className="text-muted">
-                        {inputs.email.length > 0 && inputs.email.length < 5 ? "Email must be at least 5 characters." : ""}
+                        {validateEmail(inputs)}
                     </p>
                 </div>
                 <div className="form-group">
@@ -57,7 +76,7 @@ const Form = ({ inputs, setInputs }) => {
                         className="form-control"
                     />
                     <p className="text-muted">
-                        {inputs.password.length > 0 && inputs.password.length < 8 ? "Password must be at least 8 characters." : ""}
+                        {validatePassword(inputs)}
                     </p>
                 </div>
                 <div className="form-group">
@@ -69,7 +88,7 @@ const Form = ({ inputs, setInputs }) => {
                         className="form-control"
                     />
                     <p className="text-muted">
-                        {inputs.password !== inputs.confirmPassword ? "Passwords must match." : ""}
+                        {validateConfirmPassword(inputs)}
                     </p>
                 </div>
             </form>
